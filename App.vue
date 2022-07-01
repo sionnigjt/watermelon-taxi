@@ -16,7 +16,7 @@
 	/*每个页面公共css */
 			
 	.map-content{
-		height: 60vh;
+		height: 55vh;
 			overflow: hidden;
 		}
 	.content{

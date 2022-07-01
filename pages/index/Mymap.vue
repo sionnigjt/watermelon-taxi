@@ -1,6 +1,6 @@
 <template>
-    <view class="content">
-     <map style="width: 100%;max-height: 60vh;height: 60vh;" :layer-style='5'  :style="{height:mapheight}" :show-location='true':show-compass='true'
+    <view class="map-content">
+     <map style="width: 100%;max-height: 55vh;height: 55vh;" :layer-style='5'  :style="{height:mapheight}" :show-location='true':show-compass='true'
 	   :latitude="latitude" :longitude="longitude" :markers="markers" :scale="scale"  @markertap="markertap"   @callouttap='callouttap'>
        </map>
     </view>
@@ -77,7 +77,7 @@
     }
 </script>
 <style> 
-.content{
+.map-content{
 	/* overflow: hidden; */
 	/* height: 50%; */
 }
