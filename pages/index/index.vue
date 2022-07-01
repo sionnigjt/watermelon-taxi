@@ -1,11 +1,13 @@
 <template>
-	<view class="content">
-		<uni-section title="基本用法" type="line">
+	<view class="index-content">
+		<uni-section title="基本用法" type="line" >
 			<uni-search-bar @confirm="search" :focus="true" @blur="blur" @focus="focus" @input="input"
 				@cancel="cancel" @clear="clear">
 			</uni-search-bar>
 		</uni-section>
-		<Mymap></Mymap> 
+		<Mymap></Mymap>
+		<GrapCar></GrapCar>
+	
 	</view>
 </template>
 
@@ -14,6 +16,7 @@
 
 <script>
 	import Mymap from "./Mymap.vue"
+	import GrapCar from "./GrapCar.vue"
 	import UniSection from "@/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue"
 	// import uni-forms-item from "../../uni_modules/uni-forms/components/uni-forms-item/uni-forms-item.vue"
 	// import uni-forms from "../../uni_modules/uni-forms/components/uni-forms/uni-forms.vue"
@@ -29,7 +32,8 @@
 		},
 		components:{
 			Mymap,
-			UniSection
+			UniSection,
+			GrapCar
 		}
 	}
 	
@@ -62,29 +66,12 @@
 			height: 35px;
 			margin-left: 10px;
 		}
-	/* .content {
-		display: flex;
-		flex-direction: column;
+	 .index-content {
+		display: block;
+	/* 	flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		justify-content: center; */
 	}
 
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	} */
+	
 </style>

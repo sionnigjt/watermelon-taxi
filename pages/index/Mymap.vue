@@ -1,15 +1,15 @@
 <template>
     <view class="content">
-     <map style="width: 100%;max-height: 65%;height: 65%;" :layer-style='5'  :style="{height:mapheight}" :show-location='true':show-compass='true'
+     <map style="width: 100%;max-height: 60vh;height: 60vh;" :layer-style='5'  :style="{height:mapheight}" :show-location='true':show-compass='true'
 	   :latitude="latitude" :longitude="longitude" :markers="markers" :scale="scale"  @markertap="markertap"   @callouttap='callouttap'>
        </map>
-	   
-	
     </view>
 </template>
 
 <script>
+
     export default {
+		
         data() {
             return {
                         latitude:30.65984, //纬度
@@ -81,7 +81,4 @@
 	/* overflow: hidden; */
 	/* height: 50%; */
 }
-.take_taxi{
-	width: 100%;
-	background-color: aliceblue;
-}</style>
+</style>

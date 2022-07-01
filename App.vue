@@ -14,7 +14,11 @@
 
 <style>
 	/*每个页面公共css */
-		
+			
+	.map-content{
+		height: 60vh;
+			overflow: hidden;
+		}
 	.content{
 		height: 100%;
 		overflow: hidden;
