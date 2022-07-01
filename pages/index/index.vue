@@ -14,6 +14,7 @@
 
 <script>
 	import Mymap from "./Mymap.vue"
+	import UniSection from "@/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue"
 	// import uni-forms-item from "../../uni_modules/uni-forms/components/uni-forms-item/uni-forms-item.vue"
 	// import uni-forms from "../../uni_modules/uni-forms/components/uni-forms/uni-forms.vue"
 	export default {
@@ -27,7 +28,8 @@
 
 		},
 		components:{
-			Mymap
+			Mymap,
+			UniSection
 		}
 	}
 	

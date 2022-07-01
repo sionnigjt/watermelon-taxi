@@ -14,4 +14,32 @@
 
 <style>
 	/*每个页面公共css */
+		
+	.content{
+		height: 100%;
+		overflow: hidden;
+	}
+	page{
+			height: 100%;
+		}
+	/* 滑动条 */
+	/* *{
+		overflow: hidden;
+	} */
+	/* scroll-view ::-webkit-scrollbar {  
+	
+	    display: none !important;  
+	
+	    width: 0 !important;  
+	
+	    height: 0 !important;  
+	
+	    -webkit-appearance: none;  
+	
+	    background: transparent;  
+	
+	}
+	::-webkit-scrollbar{
+	
+	  display: none;} */
 </style>
