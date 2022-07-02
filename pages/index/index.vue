@@ -1,13 +1,13 @@
 <template>
 	<view class="index-content">
 		<uni-section title="基本用法" type="line" >
-			<uni-search-bar @confirm="search" :focus="true" @blur="blur" @focus="focus" @input="input"
-				@cancel="cancel" @clear="clear">
-			</uni-search-bar>
+		<uni-search-bar @confirm="search" :focus="true" v-model="searchValue" @blur="blur" @focus="focus" @input="input"
+						@cancel="cancel" @clear="clear">
+		</uni-search-bar>
 		</uni-section>
+		
 		<Mymap></Mymap>
 		<GrapCar></GrapCar>
-	
 	</view>
 </template>
 
@@ -22,13 +22,22 @@
 	// import uni-forms from "../../uni_modules/uni-forms/components/uni-forms/uni-forms.vue"
 	export default {
 		data() {
+			
 			return {
-		
+			 searchValue:"123"
 			}
 		},
 
 		methods: {
-
+			input(e){
+				console.log("e")
+				
+			},
+			focus(e) {
+				uni.showToast({
+					title: 'focus事件，输出值为：' + e.value,
+					icon: 'none'
+					})},
 		},
 		components:{
 			Mymap,

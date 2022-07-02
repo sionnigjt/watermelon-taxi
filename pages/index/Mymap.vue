@@ -1,7 +1,8 @@
 <template>
     <view class="map-content">
-     <map style="width: 100%;max-height: 55vh;height: 55vh;" :layer-style='5'  :style="{height:mapheight}" :show-location='true':show-compass='true'
-	   :latitude="latitude" :longitude="longitude" :markers="markers" :scale="scale"  @markertap="markertap"   @callouttap='callouttap'>
+     <map style="width: 100%;max-height: 55vh;height: 55vh;" :layer-style='5'  :style="{height:mapheight}" :show-location='true' :show-compass='true'
+	   :latitude="latitude" :longitude="longitude" :markers="markers" 
+	   :scale="scale"  @markertap="markertap"   @callouttap='callouttap'>
        </map>
     </view>
 </template>
@@ -72,13 +73,38 @@
             callouttap(e){
                 console.log('此处经纬度')
 				
-        }
+        },
+		chooseLocation(e) { //打开地图选择位置
+			uni.chooseLocation({
+				success: res => {
+					console.log('位置名称：' + res.name);
+					console.log('详细地址：' + res.address);
+					console.log('纬度：' + res.latitude);
+					console.log('经度：' + res.longitude);
+					uni.getLocation({
+						type: 'gcj02',
+						altitude:true,
+						geocode:true,
+						success: function(res) {
+							console.log('当前位置的经度：' + res.longitude);
+							console.log('当前位置的纬度：' + res.latitude);
+						}
+					});
+					console.log('省：' + res.address.slice(0, res.address.indexOf('省') + 1));
+					console.log('市：' + res.address.slice(res.address.indexOf('省') + 1, res.address.indexOf('市') + 1));
+					console.log('区：' + res.address.slice(res.address.indexOf('市') + 1, res.address.indexOf('区') + 1));
+					this.query.address = res.address;
+					this.query.latitude = res.latitude;
+					this.query.longitude = res.longitude;
+					this.query.province = res.address.slice(0, res.address.indexOf('省') + 1)
+					this.query.city = res.address.slice(res.address.indexOf('省') + 1, res.address.indexOf('市') + 1)
+					this.query.district = res.address.slice(res.address.indexOf('市') + 1, res.address.indexOf('区') + 1)
+				}
+			});
+		}
         }
     }
 </script>
 <style> 
-.map-content{
-	/* overflow: hidden; */
-	/* height: 50%; */
-}
+
 </style>
