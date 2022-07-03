@@ -2,10 +2,10 @@
 	<view class="content1">
 		<view class="go_where">
 			<view class="first">
-			从<span @click="find_start_point">
-			{{start_point}}</span>	出发
+			从<span @click="find_start_point" @mouseenter="enters" @mouseleave="leaver">
+		 	 {{start_point}}</span>	出发
 			</view>
-			<view class="end">
+			<view class="end" @click="find_end_point" @mouseenter="enters" @mouseleave="leaver">
 				<span>{{end_point}}</span>
 			</view>
 		</view>
@@ -19,6 +19,7 @@
 
 <script >
 	export default{
+		props:["searchValue"],
 		data(){
 			let start_point="xxx"
 			let end_point="目的地"
@@ -32,8 +33,69 @@
 		methods:{
 			find_start_point(e){
 				console.log(e)
+				uni.chooseLocation({
+					success: res => {
+						console.log('位置名称：' + res.name);
+						console.log('详细地址：' + res.address);
+						console.log('纬度：' + res.latitude);
+						console.log('经度：' + res.longitude);
+						uni.getLocation({
+							type: 'gcj02',
+							altitude:true,
+							geocode:true,
+							success: function(res) {
+								console.log('当前位置的经度：' + res.longitude);
+								console.log('当前位置的纬度：' + res.latitude);
+							}
+						});
+						console.log('省：' + res.address.slice(0, res.address.indexOf('省') + 1));
+						console.log('市：' + res.address.slice(res.address.indexOf('省') + 1, res.address.indexOf('市') + 1));
+						console.log('区：' + res.address.slice(res.address.indexOf('市') + 1, res.address.indexOf('区') + 1));
+						this.query.address = res.address;
+						this.query.latitude = res.latitude;
+						this.query.longitude = res.longitude;
+						this.query.province = res.address.slice(0, res.address.indexOf('省') + 1)
+						this.query.city = res.address.slice(res.address.indexOf('省') + 1, res.address.indexOf('市') + 1)
+						this.query.district = res.address.slice(res.address.indexOf('市') + 1, res.address.indexOf('区') + 1)
+					}
+				});
+			},
+			find_end_point(){
+				uni.chooseLocation({
+					success: res => {
+						console.log('位置名称：' + res.name);
+						console.log('详细地址：' + res.address);
+						console.log('纬度：' + res.latitude);
+						console.log('经度：' + res.longitude);
+						uni.getLocation({
+							type: 'gcj02',
+							altitude:true,
+							geocode:true,
+							success: function(res) {
+								console.log('当前位置的经度：' + res.longitude);
+								console.log('当前位置的纬度：' + res.latitude);
+							}
+						});
+						console.log('省：' + res.address.slice(0, res.address.indexOf('省') + 1));
+						console.log('市：' + res.address.slice(res.address.indexOf('省') + 1, res.address.indexOf('市') + 1));
+						console.log('区：' + res.address.slice(res.address.indexOf('市') + 1, res.address.indexOf('区') + 1));
+						this.query.address = res.address;
+						this.query.latitude = res.latitude;
+						this.query.longitude = res.longitude;
+						this.query.province = res.address.slice(0, res.address.indexOf('省') + 1)
+						this.query.city = res.address.slice(res.address.indexOf('省') + 1, res.address.indexOf('市') + 1)
+						this.query.district = res.address.slice(res.address.indexOf('市') + 1, res.address.indexOf('区') + 1)
+					}
+				});
+			},
+			enters(){
+				
+				
+			},leaver(){
+				
 			}
-		}
+		},
+		
 	}
 </script>
 
@@ -68,9 +130,7 @@
 			margin-top: 1vh;
 			
 		}
-		.first:hover,.end:hover{
-			color: #adacac;
-		}
+	
 		.end{
 			margin-top: 2vh;
 		}

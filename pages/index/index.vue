@@ -1,13 +1,11 @@
 <template>
 	<view class="index-content">
-		<uni-section title="基本用法" type="line" >
-		<uni-search-bar @confirm="search" :focus="true" v-model="searchValue" @blur="blur" @focus="focus" @input="input"
-						@cancel="cancel" @clear="clear">
-		</uni-search-bar>
-		</uni-section>
+			<uni-search-bar @confirm="search" :focus="true" v-model="searchValue" @input="input"
+				@cancel="cancel" @clear="clear">
+			</uni-search-bar>
 		
 		<Mymap></Mymap>
-		<GrapCar></GrapCar>
+		<GrapCar :searchValue="searchValue"></GrapCar>
 	</view>
 </template>
 
@@ -20,25 +18,21 @@
 	import UniSection from "@/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue"
 	// import uni-forms-item from "../../uni_modules/uni-forms/components/uni-forms-item/uni-forms-item.vue"
 	// import uni-forms from "../../uni_modules/uni-forms/components/uni-forms/uni-forms.vue"
+	
 	export default {
 		data() {
-			
-			return {
-			 searchValue:"123"
-			}
-		},
+				return {
+					searchValue: ''
+				}
+			},
 
 		methods: {
-			input(e){
-				console.log("e")
+			input(){
 				
 			},
-			focus(e) {
-				uni.showToast({
-					title: 'focus事件，输出值为：' + e.value,
-					icon: 'none'
-					})},
-		},
+			cancel(){},
+			clear(){}
+			},
 		components:{
 			Mymap,
 			UniSection,
@@ -81,6 +75,5 @@
 		align-items: center;
 		justify-content: center; */
 	}
-
 	
 </style>
